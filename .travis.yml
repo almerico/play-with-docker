@@ -48,7 +48,6 @@ before_script:
 # in a modern Go project.
 script:
  # - test -z $(gofmt -s -l $GO_FILES)         # Fail if a .go file hasn't been formatted with gofmt
- - cd $HOME/go/src/github.com/play-with-docker/play-with-docker
  - docker-compose -d up 
  - sleep 3m
  - docker ps 
