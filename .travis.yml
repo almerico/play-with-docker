@@ -51,8 +51,10 @@ script:
  - docker-compose up -d 
  - sleep 120
  - netcat -z -n -v localhost:80 1-1000 2>&1 | grep succeeded
+ - netcat -z -n -v localhost:80
+ - nc -z localhost 80
  - docker ps 
  - docker-compose down
-
+ 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then echo "have to push repo or do deployment in case of master branch" fi
