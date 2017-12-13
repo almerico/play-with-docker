@@ -50,9 +50,9 @@ script:
  # - test -z $(gofmt -s -l $GO_FILES)         # Fail if a .go file hasn't been formatted with gofmt
  - docker-compose up -d 
  - sleep 120
-
+ - netcat -z -n -v localhost:8888 1-1000 2>&1 | grep succeeded
  - docker ps 
- - docker compose down
+ - docker-compose down
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then echo "have to push repo or do deployment in case of master branch" fi
